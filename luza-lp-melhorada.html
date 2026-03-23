@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seja uma Consultora Luza | Independência Financeira com Joias</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #E8735A;
+    --coral-light: #F2967E;
+    --coral-pale: #F5C4BA;
+    --blush: #F0A898;
+    --blush-light: #F7C5BC;
+    --dark: #2C1A1A;
+    --text: #4A3030;
+    --white: #FFFFFF;
+    --cream: #F7C5BC;
+    --gold: #C8A96E;
+    --gold-light: #E8D5AA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,248,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232,115,90,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-cta {
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .nav-cta:hover { background: var(--coral-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,115,90,0.35); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-left {
+    background: var(--coral);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    width: fit-content;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-badge span { font-size: 16px; }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 4.5vw, 58px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--coral);
+    border: none;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 0.2px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+
+  .hero-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-right {
+    background: var(--blush-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-right-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(245,198,198,0.4) 0%, transparent 60%);
+  }
+
+  /* ─── STATS STRIP ─── */
+  .stats-strip {
+    background: var(--dark);
+    padding: 28px 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 8px 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  /* ─── BENEFITS ─── */
+  .benefits {
+    background: var(--cream);
+    padding: 100px 48px;
+  }
+
+  .section-tag {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 900;
+    color: var(--dark);
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--text);
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 64px;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .benefit-card {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 28px;
+    text-align: center;
+    border: 1px solid rgba(232,115,90,0.12);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--coral);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .benefit-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(232,115,90,0.15); }
+  .benefit-card:hover::before { transform: scaleX(1); }
+
+  .benefit-icon {
+    width: 56px; height: 56px;
+    background: var(--coral-pale);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 26px;
+  }
+
+  .benefit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .benefit-desc {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-it-works {
+    background: var(--coral);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how-it-works::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .how-it-works .section-title { color: white; }
+  .how-it-works .section-title em { color: var(--gold-light); }
+  .how-it-works .section-tag { color: rgba(255,255,255,0.7); }
+  .how-it-works .section-subtitle { color: rgba(255,255,255,0.8); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-number {
+    width: 64px; height: 64px;
+    background: white;
+    color: var(--coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    position: relative;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .how-cta {
+    text-align: center;
+    margin-top: 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--coral);
+    border: none;
+    padding: 18px 48px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials {
+    background: var(--blush-light);
+    padding: 100px 48px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 32px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(232,115,90,0.08);
+    transition: transform 0.3s ease;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); }
+
+  .testimonial-quote {
+    font-size: 48px;
+    color: var(--coral-pale);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .author-avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--coral-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--dark);
+    display: block;
+  }
+
+  .author-city {
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 500;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* ─── FOUNDERS ─── */
+  .founders {
+    background: white;
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .founders-image {
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/5;
+    box-shadow: 0 32px 80px rgba(232,115,90,0.2);
+  }
+
+  .founders-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .founders-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: white;
+    border-radius: 16px;
+    padding: 14px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  .founders-badge-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--dark);
+    font-weight: 700;
+  }
+
+  .founders-badge-sub {
+    font-size: 11px;
+    color: var(--coral);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .founders-content .section-tag,
+  .founders-content .section-title { text-align: left; }
+
+  .founders-content .section-title { font-size: 38px; margin-bottom: 20px; }
+
+  .founders-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 16px;
+    opacity: 0.85;
+  }
+
+  .founders-highlight {
+    background: var(--coral-pale);
+    border-left: 3px solid var(--coral);
+    padding: 16px 24px;
+    border-radius: 0 12px 12px 0;
+    margin: 28px 0;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--dark);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+  }
+
+  /* ─── ABOUT ─── */
+  .about {
+    background: var(--cream);
+    padding: 100px 48px;
+    text-align: center;
+  }
+
+  .about-content {
+    max-width: 680px;
+    margin: 0 auto 64px;
+  }
+
+  .about-text {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  .about-text + .about-text { margin-top: 20px; }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .photo-item {
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--blush);
+  }
+
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .photo-item:hover img { transform: scale(1.05); }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    background: var(--dark);
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,115,90,0.15) 0%, transparent 70%);
+  }
+
+  .final-cta .section-tag { color: var(--gold-light); position: relative; z-index: 1; }
+
+  .final-cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .final-cta-title em { font-style: italic; color: var(--gold-light); }
+
+  .final-cta-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, #D4AA7D 100%);
+    color: var(--dark);
+    border: none;
+    padding: 20px 56px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 8px 40px rgba(200,169,110,0.45);
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.3px;
+  }
+  .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 56px rgba(200,169,110,0.55); }
+
+  .final-note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1E1010;
+    padding: 32px 48px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  footer strong { color: rgba(255,255,255,0.6); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+  .hero-badge { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.2s; }
+  .hero-subtitle { animation-delay: 0.3s; }
+  .hero-cta-group { animation-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 80px 32px 60px; }
+    .hero-right { height: 320px; }
+
+    .stats-strip { grid-template-columns: repeat(2, 1fr); padding: 28px 24px; gap: 20px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+    .stat-item:nth-child(3), .stat-item:last-child { border-bottom: none; }
+
+    .benefits { padding: 72px 24px; }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .how-it-works { padding: 72px 24px; }
+    .steps-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .steps-grid::before { display: none; }
+
+    .testimonials { padding: 72px 24px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .founders { padding: 72px 24px; grid-template-columns: 1fr; gap: 40px; }
+
+    .about { padding: 72px 24px; }
+    .photo-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .final-cta { padding: 80px 24px; }
+  }
+
+  @media (max-width: 560px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Luza ♡</div>
+  <a href="#cadastro" class="nav-cta">Quero ser consultora →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span>✨</span> Mais de 6 anos transformando vidas
+    </div>
+    <h1 class="hero-title">
+      Venda joias.<br>
+      Conquiste sua<br>
+      <em>liberdade.</em>
+    </h1>
+    <p class="hero-subtitle">
+      Torne-se uma Consultora Luza, venda joias sofisticadas por consignação — sem investir nada — e construa sua renda do seu jeito.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#cadastro" class="btn-primary">Quero ser consultora Luza →</a>
+      <p class="hero-note">🔒 Cadastro gratuito · Sem estoque inicial · Suporte completo</p>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Substitua pelo src real da sua imagem de fundo -->
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#FADADD 0%,#F2C4C4 40%,#E8A8A8 100%);display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:80px;opacity:0.4">💎</span>
+    </div>
+    <div class="hero-right-overlay"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-number">6+</span>
+    <span class="stat-label">Anos de mercado</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">0</span>
+    <span class="stat-label">Investimento inicial</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">50%</span>
+    <span class="stat-label">Comissão máxima</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">NE</span>
+    <span class="stat-label">Maior empresa feminina do nordeste</span>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <span class="section-tag">Por que escolher a Luza?</span>
+  <h2 class="section-title">Tudo o que você precisa<br>para <em>brilhar de verdade</em></h2>
+  <p class="section-subtitle">Um modelo de negócio feito para mulheres que querem crescer com liberdade, suporte e sem arriscarem nada.</p>
+
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">💰</div>
+      <h3 class="benefit-title">Investimento Zero</h3>
+      <p class="benefit-desc">Você retira as joias por consignação, vende e só então repassa o valor. Zero risco, zero custo inicial.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💎</div>
+      <h3 class="benefit-title">Até 50% de Comissão</h3>
+      <p class="benefit-desc">Quanto mais você vende, mais você ganha. Plano de carreira com comissões crescentes e reconhecimento.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📈</div>
+      <h3 class="benefit-title">Plano de Carreira</h3>
+      <p class="benefit-desc">Você não fica parada. Existe um caminho claro de crescimento para quem quer ir além.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🤝</div>
+      <h3 class="benefit-title">Suporte Completo</h3>
+      <p class="benefit-desc">Time dedicado para ajudar nas suas vendas, tirar dúvidas e garantir que você nunca se sinta sozinha.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <span class="section-tag">Simples assim</span>
+  <h2 class="section-title">Como <em>funciona?</em></h2>
+  <p class="section-subtitle">Em menos de 72h você pode estar com seu kit na mão e começando a vender.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3 class="step-title">Preencha o formulário</h3>
+      <p class="step-desc">Rápido e simples, em menos de 5 minutos. Sem burocracia.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3 class="step-title">Envie seus documentos</h3>
+      <p class="step-desc">RG ou CNH + Comprovante de Endereço direto pelo WhatsApp.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3 class="step-title">Receba o contato</h3>
+      <p class="step-desc">Nossa equipe confirma seu cadastro em até 72h.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <h3 class="step-title">Visite nosso espaço</h3>
+      <p class="step-desc">Agende seu horário no Espaço Conceito em Natal/RN.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">5</div>
+      <h3 class="step-title">Seja bem-vinda! ✨</h3>
+      <p class="step-desc">Retire seu Kit Brilhante e comece a brilhar com nossa equipe.</p>
+    </div>
+  </div>
+
+  <div class="how-cta">
+    <a href="#cadastro" class="btn-white">Quero começar agora →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <span class="section-tag">Histórias reais</span>
+  <h2 class="section-title">Elas já <em>estão brilhando</em></h2>
+  <p class="section-subtitle">Veja o que nossas consultoras dizem sobre a jornada Luza.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <span class="stars">★★★★★</span>
+      <p class="testimonial-text">Comecei sem acreditar muito, mas em dois meses já tinha superado meu salário anterior. A Luza me deu a liberdade que eu tanto queria.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩</div>
+        <div>
+          <span class="author-name">Ana Paula S.</span>
+          <span class="author-city">Natal, RN · Consultora há 1 ano</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <span class="stars">★★★★★</span>
+      <p class="testimonial-text">O que mais me conquistou foi o suporte. Nunca me senti sozinha. A equipe está sempre pronta para ajudar e a qualidade das joias vende sozinha!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩‍🦱</div>
+        <div>
+          <span class="author-name">Fernanda M.</span>
+          <span class="author-city">Parnamirim, RN · Consultora há 8 meses</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <span class="stars">★★★★★</span>
+      <p class="testimonial-text">Sou mãe de dois filhos e precisava de flexibilidade. A Luza me permitiu trabalhar nos meus horários e ainda assim ter uma renda de verdade.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩‍👧</div>
+        <div>
+          <span class="author-name">Carla R.</span>
+          <span class="author-city">Mossoró, RN · Consultora há 1,5 ano</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section style="background:white;padding:100px 48px;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div>
+      <span class="section-tag">Quem está por trás</span>
+      <h2 class="section-title" style="text-align:left;font-size:38px;">Érika Justino<br>& Lucas Junqueira</h2>
+      <p class="founders-text">Érika Santos, natural de Natal/RN, é a grande idealizadora da Luza — ao lado do seu noivo, Lucas Junqueira Baldasso. Apaixonados pelo universo feminino, o casal fundou a Luza com um propósito claro: impactar positivamente a vida das mulheres.</p>
+      <blockquote class="founders-highlight">"Em menos de 6 anos, nos tornamos uma das maiores empresas do universo feminino do Nordeste. E isso só foi possível por causa das nossas consultoras."</blockquote>
+      <p class="founders-text">Hoje a Luza é referência em joias por consignação e continua crescendo — e há espaço para você nessa história.</p>
+      <a href="#cadastro" class="btn-primary" style="margin-top:28px;display:inline-block;">Fazer parte dessa história →</a>
+    </div>
+    <div style="border-radius:32px;overflow:hidden;box-shadow:0 32px 80px rgba(232,115,90,0.2);aspect-ratio:4/5;background:linear-gradient(135deg,#FADADD,#E8A8A8);display:flex;align-items:center;justify-content:center;">
+      <!-- Substitua pelo src real: <img src="foto-fundadores.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+      <span style="font-size:60px;opacity:0.4">📸</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <span class="section-tag">Nossa essência</span>
+  <h2 class="section-title">Sobre a <em>Luza</em></h2>
+  <div class="about-content">
+    <p class="about-text">Somos uma empresa para <strong>pessoas brilhantes</strong> que, a partir da venda das nossas joias, conquistam a independência financeira e brilham ainda mais para o mundo.</p>
+    <p class="about-text" style="margin-top:16px;">Nosso objetivo é fazer você empreender do seu jeito — com suporte completo, sem riscos e com uma comunidade que torce por você todos os dias.</p>
+    <p class="about-text" style="margin-top:16px; font-style:italic; color:var(--coral);">Vamos juntas nessa jornada? 💛</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cadastro">
+  <span class="section-tag">Sua vez de brilhar</span>
+  <h2 class="final-cta-title">Pronta para<br><em>mudar sua vida?</em></h2>
+  <p class="final-cta-sub">Preencha o formulário em menos de 5 minutos e dê o primeiro passo.</p>
+  <a href="#" class="btn-gold">Quero ser consultora Luza agora ✨</a>
+  <p class="final-note">🔒 Gratuito · Sem compromisso · Nossa equipe te contata em até 72h</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>Luza Company</strong> · Natal, Rio Grande do Norte · Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
