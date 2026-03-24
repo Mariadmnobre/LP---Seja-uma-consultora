@@ -55,12 +55,12 @@ service cloud.firestore {
     function isValidLead(data) {
       return hasRequiredFields(['nomeCompleto', 'profissao', 'telefone', 'cidade', 'bairro', 'createdAt']) &&
              hasOnlyAllowedFields(['nomeCompleto', 'profissao', 'telefone', 'cidade', 'bairro', 'experiencia', 'createdAt']) &&
-             isValidString('nomeCompleto', 3, 100) &&
-             isValidString('profissao', 2, 100) &&
-             isValidString('telefone', 10, 20) &&
-             isValidString('cidade', 2, 100) &&
-             isValidString('bairro', 2, 100) &&
-             isValidOptionalString('experiencia', 200) &&
+             isValidString('nomeCompleto', 3, 500) &&
+             isValidString('profissao', 2, 500) &&
+             isValidString('telefone', 10, 50) &&
+             isValidString('cidade', 2, 500) &&
+             isValidString('bairro', 2, 500) &&
+             isValidOptionalString('experiencia', 1000) &&
              data.createdAt is timestamp;
     }
 
