@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "Consultora Luza Lead",
+      "type": "object",
+      "properties": {
+        "nomeCompleto": {
+          "type": "string",
+          "description": "Full name of the lead"
+        },
+        "profissao": {
+          "type": "string",
+          "description": "Profession of the lead"
+        },
+        "telefone": {
+          "type": "string",
+          "description": "WhatsApp number"
+        },
+        "cidade": {
+          "type": "string",
+          "description": "City"
+        },
+        "bairro": {
+          "type": "string",
+          "description": "Neighborhood"
+        },
+        "experiencia": {
+          "type": "string",
+          "description": "Previous sales experience"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of creation"
+        }
+      },
+      "required": ["nomeCompleto", "profissao", "telefone", "cidade", "bairro", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of consultant leads"
+    }
+  }
+}

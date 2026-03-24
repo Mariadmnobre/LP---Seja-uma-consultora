@@ -1,0 +1,91 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: leads
+    // Document ID: auto-generated
+    // Fields:
+    //   - nomeCompleto: string (required, 3-100 chars)
+    //   - profissao: string (required, 2-100 chars)
+    //   - telefone: string (required, 10-20 chars)
+    //   - cidade: string (required, 2-100 chars)
+    //   - bairro: string (required, 2-100 chars)
+    //   - experiencia: string (optional, 0-200 chars)
+    //   - createdAt: timestamp (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "comercial@useluza.com.br" && request.auth.token.email_verified == true));
+    }
+
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    function isValidString(field, minLen, maxLen) {
+      return request.resource.data[field] is string &&
+        request.resource.data[field].size() >= minLen &&
+        request.resource.data[field].size() <= maxLen;
+    }
+
+    function isValidOptionalString(field, maxLen) {
+      return !(field in request.resource.data) ||
+             (request.resource.data[field] is string &&
+              request.resource.data[field].size() <= maxLen);
+    }
+
+    function isValidLead(data) {
+      return hasRequiredFields(['nomeCompleto', 'profissao', 'telefone', 'cidade', 'bairro', 'createdAt']) &&
+             hasOnlyAllowedFields(['nomeCompleto', 'profissao', 'telefone', 'cidade', 'bairro', 'experiencia', 'createdAt']) &&
+             isValidString('nomeCompleto', 3, 100) &&
+             isValidString('profissao', 2, 100) &&
+             isValidString('telefone', 10, 20) &&
+             isValidString('cidade', 2, 100) &&
+             isValidString('bairro', 2, 100) &&
+             isValidOptionalString('experiencia', 200) &&
+             data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /leads/{leadId} {
+      // Anyone can create a lead if it's valid
+      allow create: if isValidLead(request.resource.data);
+      
+      // Only admins can read, update or delete leads
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      // Users can read/write their own data
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+      // Admins can manage all users
+      allow read, write: if isAdmin();
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
